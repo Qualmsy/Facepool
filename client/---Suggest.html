@@ -1,0 +1,76 @@
+<template name="Suggest">
+ <ul class="nav nav-tabs">
+  <li role="presentation"><a href="/details/{{_id}}">Details</a></li>
+  <li role="presentation"><a href="/details/{{_id}}/chat">Chat</a></li>
+  <li role="presentation" class="active"><a href="#{}">Suggest</a></li>
+ </ul>
+ <fieldset>
+  <legend>Add an Offer</legend>
+  <button  id="addNewMidpoint" class="btn btn-success">
+    Add new midpoint
+  </button>
+  {{#if midpoints}}
+    <button  id="removeMidpoint" class="btn btn-success">
+      Remove midpoint
+    </button>
+    There are {{midpoints}} to this route.
+  {{else}}
+    There is no midpoint to this route.
+  {{/if}}
+  <hr/>
+  
+  {{#autoForm id="OfferFormSuggest" collection="Offers" type="update" doc=this}}
+    <h2>Departure</h2>
+    <strong>Time of departure :</strong>
+    {{moFormat Departure.time }} 
+    ({{moFromNow Departure.time withoutSuffix}})
+    <div>
+      <strong>Description of location :</strong>
+      {{Departure.location.description}}
+    </div>
+    {{> afQuickField name="Departure.location" }}
+    {{#if midpoints}}
+      <hr/>
+      {{moFormat Midpoint1.time }} 
+      ({{moFromNow Midpoint1.time withoutSuffix}})
+      <div>
+       <strong>Description of location :</strong>
+       {{Midpoint1.location.description}}
+      </div>
+      {{> afQuickField name="Midpoint1.location" }}
+    {{/if}}
+    {{#if twomidpoints}}
+      <hr/>
+      {{moFormat Midpoint2.time }} 
+      ({{moFromNow Midpoint2.time withoutSuffix}})
+      <div>
+       <strong>Description of location :</strong>
+       {{Midpoint2.location.description}}
+      </div>
+      {{> afQuickField name="Midpoint2.location" }}
+    {{/if}}
+    <hr/>
+
+    <h2>Arrival</h2>
+    {{#if Arrival.time}}
+      <strong>Estimated time of arrival :</strong>
+      {{moFormat Arrival.time }} 
+      ({{moFromNow Arrival.time withoutSuffix}})
+    {{/if}}
+    <div>
+      <strong>Description of location :</strong>
+      {{Arrival.location.description}}
+    </div>
+    {{> afQuickField name="Arrival.location" }}
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+      <button type="reset" class="btn btn-default">
+        Reset
+      </button>
+    </div>
+  {{/autoForm}}
+ </fieldset>
+</template>

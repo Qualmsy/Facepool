@@ -1,0 +1,76 @@
+<template name="NewOffer">
+ <fieldset>
+  <legend><h2>New offer</h2></legend>    
+   {{#autoForm id="NewOfferForm" collection="Offers" type="insert"}}
+   <h3>
+    Please enter the details of your car:
+   </h3>
+   <div style="width: 20%">
+     {{> afQuickField name="carBrand" }}
+     {{> afQuickField name="carModel" }}
+     {{> afQuickField name="carYear" }}
+     {{> afQuickField name="carColor" }}
+   </div>
+   <hr>
+    <h2>Departure</h2>
+    <div class="maxWidth200 marginLeft">
+        {{> afFormGroup name="Departure.time" }}
+    </div>
+      <div class="marginLeft">
+       {{> afQuickField name="Departure.location" }}
+     </div>
+    <hr/>
+
+    {{#if midpoints}}
+        <div class="maxWidth200 marginLeft">
+          {{> afFormGroup name="Midpoint1.time" }}
+        </div>
+        <div class="marginLeft">
+        {{> afQuickField name="Midpoint1.location" }}
+        </div>
+    {{/if}}
+      {{#if twomidpoints}}
+        <hr/>
+        <div class="maxWidth200 marginLeft">
+          {{> afFormGroup name="Midpoint2.time" }}
+        </div>
+        <div class="marginLeft">
+        {{> afQuickField name="Midpoint2.location" }}
+        </div>
+    {{/if}}
+     <button  id="addNewMidpoint" class="btn btn-success">
+        Add new midpoint
+     </button>
+     {{#if midpoints}}
+      <button  id="removeMidpoint" class="btn btn-success">
+          Remove midpoint
+      </button>
+        There are {{midpoints}} to this route.
+     {{else}}
+        There is no midpoint to this route.
+     {{/if}}
+     <hr/>
+
+    <h2>Arrival</h2>
+    <div class="maxWidth200 marginLeft">
+        {{> afFormGroup name="Arrival.time" }}
+    </div>
+    <div class="marginLeft">
+   {{> afQuickField name="Arrival.location" }}
+   </div>
+   <hr/>
+    <h2>Price asked</h2>
+     <div class="maxWidth200 marginLeft">
+        {{> afFormGroup name="price" }}
+     </div>
+     <br/>
+   <div class="form-group">
+    <button type="submit" class="btn btn-primary" id="submitButton">
+      Submit
+    </button>
+    <button type="reset" class="btn btn-warning marginLeft">Reset</button>
+    <a href="/" class="btn btn-danger marginLeft">Cancel</a>
+   </div>
+  {{/autoForm}}
+ </fieldset>
+</template>

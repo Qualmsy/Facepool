@@ -1,0 +1,92 @@
+<template name="Offers">
+ <a class="btn btn-primary" href="/new">Offer a ride!</a>
+ <!--
+ <a class="btn btn-success marginLeft" href="/newask">Ask for a ride!</a>-->
+ <hr/>
+
+ <h2>Offers</h2>
+ <table id="offersTable">
+  <tr>
+   <th>Departure time</th>
+   <th>From</th>
+   <th>To</th>
+   <th>Car</th>
+   <th>Price</th>
+   <th class="noBorder">Driver</th>
+  </tr>
+
+  <tr>
+   <td class="noBorder" style="min-width: 200px">
+    <div class="input-group datetimepicker" id="datetimeFilterInput">
+     <span class="input-group-addon">
+      <i class="glyphicon glyphicon-calendar"></i>
+     </span>
+     <input class="set-due-date form-control" data-bind="value: datetimeFilterInput" type="text"  placeholder="Starting from..."/>
+  	 </div>
+   </td>
+   <td class="noBorder">
+   	<input class="filterinput" id="fromFilterInput" placeholder="From keyword..."/>
+   </td>
+   <td class="noBorder">
+   	<input class="filterinput" id="toFilterInput" placeholder="To keyword..."/>
+   </td>
+   <td class="noBorder"></td>
+   <td class="noBorder"></td>
+   <td class="noBorder"></td>
+   <td class="noBorder">
+   	<button class="btn btn-primary" id="filterOffersButton">Filter</button>
+   	<button class="btn btn-warning" id="resetOffersButton">Reset</button>
+   </td>
+  </tr>
+
+  {{#each offerList}}		
+   <tr >
+    <td>{{moFormat Departure.time }} ({{moFromNow Departure.time withoutSuffix}})</td>
+	<td>{{Departure.location.description}}</td>
+	<td>{{Arrival.location.description}}</td>
+  <td>
+    {{carColor}} {{carBrand}} {{carModel}} {{carYear}}
+  </td>
+  <td>{{#if price}}{{price}}${{/if}}</td>
+	 <a target="_blank" href="{{facebookLinkHelper driver}}">
+	  <img src="{{driverPicHelper driver}}" alt="" class="avatar"/>
+	 </a>
+  {{#if userIsDriver driver}}
+      <td class="noBorder buttonsCell">
+        <a href="/update/{{_id}}" class="btn btn-success">Update</a>
+        <a href="/chat/{{_id}}" class="btn btn-success">Chat</a>
+      </td>
+  {{else}}
+    <td class="noBorder buttonsCell">
+     <label class="btn btn-primary iaminterestedRadioInput" for="offer_{{_id}}">
+      <input type="checkbox" name="iaminterested" id="offer_{{_id}}" value="{{_id}}" aria-label="I am interested" checked={{isChecked whoIsInterested}}>
+      <span>I'm in</span>
+     </label>
+     <a href="/details/{{_id}}" class="btn btn-success">Details</a>
+     <a href="/chat/{{_id}}" class="btn btn-success">Chat</a>
+
+	</td>		
+  {{/if}}
+   </tr>
+  {{else}}
+   <h2>No results were found.</h2>
+  {{/each}}		
+ </table>
+</template>
+
+
+
+<template name="midpoints">
+<th>Midpoints</th>
+	<td>
+	{{#if Midpoint2}}
+		2
+	{{else}}
+		{{#if Midpoint2}}
+			1
+		{{else}}
+			0
+		{{/if}}
+	{{/if}}
+</td>
+</template>

@@ -1,0 +1,203 @@
+body {
+	background: black;
+}
+div {
+	position: relative;
+}
+h1 {
+	display: inline-block;
+}
+#wrapper {
+	max-width: 1300px;
+	min-width: 900px;
+	width: 90%;
+	margin: 0 auto;
+	padding: 0px 25px;
+	padding-bottom: 25px;
+	background: #BBB;
+}
+
+#offersTable th {
+	font-size: 1.4em;
+	text-align: center;
+	
+}
+#offersTable td {
+	margin: 0;
+	padding: 5px 10px;
+	border: 1px solid #333;
+	max-width: 250px;
+}
+#offersTable .buttonsCell {
+	min-width: 400px;
+}
+.marginLeft {
+	margin-left: 50px;
+}
+
+#offersTable {
+	margin-top: 10px;
+}
+.centered {
+	margin: 0 auto;
+	text-align: center;
+	vertical-align: top;
+}
+.datetimepicker {
+	min-width: 200px;
+}
+.spaced {
+	margin-bottom: 15px;
+	padding: 5px;
+	display: block;
+}
+.logo {
+	color: #009F39;
+	text-shadow: 1px 1px 5px #000;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.facebook {
+	color: #55F;
+	font-size: 1.4em;
+}
+.card {
+	border: 1px solid green;
+	height: 200px;
+	width: 350px;
+	padding: 10px;
+	margin: 10px;
+}
+.addnews {
+	background: #271;
+	padding: 5px 10px;
+	margin: 15px 30px;
+	font-size: 1.5em;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#login {
+	float: right;
+	line-height: 1em;
+	margin: 15px;
+	font-size: 1.3em;
+}
+.avatar {
+	margin: 0px 10px;
+}
+.OfferRow:hover {
+	background: #24BF59;
+	cursor: pointer;
+}
+
+td.noBorder {
+	border: none !important;
+}
+h2 {
+	text-align: center;
+}
+.maxWidth200 {
+	max-width: 200px;
+}
+.filterinput {
+	padding: 5px;
+}
+
+.whoIsInterestedBox {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 400px;
+	padding: 0px;
+	margin: 0px 20px;
+}
+
+.chatInputBox {
+	width: 400px;
+	margin: 10px auto;
+	height: 50px;
+	font-size: 1.25em;
+}
+.chatroom {
+	width: 400px;
+	margin: 0 20px;
+}
+.leftchat, .rightchat{
+  min-height: 90px;
+}
+.chatbox{
+  box-shadow: 1px 2px 2px rgba(0,0,0,.25);
+}
+.profilepic{
+  border: 3px solid #FFF;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}
+.rightchat .profilepic{
+  right: 0;
+}
+.chatbox{
+  background: #FFF;
+  padding: .75em;
+  border-radius: 10px;
+  color: #444;
+  position: relative;
+  width: 300px;
+}
+.leftchat .chatbox{
+  float: right;
+  margin-left: 1.25em;
+  border-top-left-radius: 0;
+}
+.rightchat .chatbox{
+  float: left;
+  margin-right: 1.25em;
+  border-top-right-radius: 0;
+}
+.chatbox:before{
+  content: '';
+  position: absolute;
+  width: 0; 
+	height: 0;
+}
+.leftchat .chatbox:before{
+  top: 1em;
+  left: -.5em;
+	border-top: .5em solid transparent;
+	border-bottom: .5em solid transparent; 	
+	border-right: .5em solid #FFF; 
+}
+.rightchat .chatbox:before{
+  top: 1em;
+  right: -.5em;
+	border-top: .5em solid transparent;
+	border-bottom: .5em solid transparent; 	
+	border-left: .5em solid #FFF; 
+}
+.timestamp{
+  clear: both;
+  color: #666;
+  padding: .333em 0 .5em 0;
+  font-size: .8em;
+  font-family: Verdana;
+}
+.leftchat .timestamp{
+  text-align: right;
+}
+.icon-ok{ color: #FFF; }
+
+/*
+* {
+	background: black;
+	color: white;
+}
+a > span:hover {
+	background: #888;
+	color: #000;
+}
+td:hover {
+	color: #000;
+}
+td > span:hover {
+	color: #000;
+}*/

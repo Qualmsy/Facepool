@@ -1,0 +1,55 @@
+<template name="Chat">
+	
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/">Back</a></li>
+</ul>
+
+  <div>
+	<div class="chatroom">
+		<h3>Chat with {{#if driverName}}{{driverName}}{{else}}Unidentified person{{/if}}</h3>
+		<div><input class="chatInputBox" type="text" placeholder="Type message..." /></div>
+ 	{{#each Messages}}
+ 	{{#if isUserSayingThis owner}}
+	<div class="leftchat">
+		<a href="{{facebookLink}}" target="_blank"><img src="{{userPicHelper facebookId}}" alt="" class="profilepic"/></a>
+		<div class="chatbox">
+			{{text}}
+		</div>
+		<div class="timestamp">
+			{{facebookName}}
+		</div>
+	</div>
+	{{else}}
+	<div class="rightchat">
+		<a href="{{facebookLink}}" target="_blank"><img src="{{userPicHelper facebookId}}" alt="" class="profilepic"/></a>
+		<div class="chatbox">
+			{{text}}
+		</div>
+		<div class="timestamp">
+			{{facebookName}}
+		</div>
+	</div>
+	{{/if}}
+	{{/each}}
+	</div>
+
+	<div class="whoIsInterestedBox">
+		<h3>Who is interested?</h3>
+	 	{{#each whoIsInterested}}
+		<div class="leftchat">
+			<a href="{{facebookLink}}" target="_blank"><img src="{{userPicHelper facebookId}}" alt="" class="profilepic"/></a>
+			<div class="chatbox">
+				{{facebookName}}
+			</div>
+			<div class="timestamp">
+				{{moFromNow timestamp withoutSuffix}}
+			</div>
+		</div>
+		{{else}}
+
+		<h4>Nobody, apparently...</h4>
+		{{/each}}
+	</div>
+  </div>
+
+</template>

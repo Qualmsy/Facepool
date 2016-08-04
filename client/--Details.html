@@ -1,0 +1,91 @@
+<template name="Details">
+  <ul class="nav nav-tabs">
+  <li role="presentation"><a href="/">Back</a></li>
+</ul>
+<h3>Details of the car making the trip</h3>
+  <h5>Brand: {{carBrand}}</h5>
+	<h5>Model: {{carModel}}</h5>
+	<h5>Year: {{carYear}}</h5>
+	<h5>Color: {{carColor}}</h5>
+
+ <fieldset>
+  <legend><h2>Here are the details of the itinerary</h2></legend>
+
+  
+  {{#autoForm id="UpdateOfferForm" collection="Offers" type="update" doc=this}}
+    <h2>Departure</h2>
+  <div class="marginLeft">
+    <strong>Time of departure :</strong>
+    {{moFormat Departure.time }} 
+    ({{moFromNow Departure.time withoutSuffix}})
+    <div>
+      <strong>Description of location :</strong>
+      {{Departure.location.description}}
+    </div>
+    {{> afQuickField name="Departure.location" }}
+  </div>
+   <hr/>
+    {{#if midpoints}}
+     
+      <div class="marginLeft">
+      {{moFormat Midpoint1.time }} 
+      ({{moFromNow Midpoint1.time withoutSuffix}})
+      <div>
+       <strong>Description of location :</strong>
+       {{Midpoint1.location.description}}
+      </div>
+      {{> afQuickField name="Midpoint1.location" }}
+    </div>
+    {{/if}}
+    {{#if twomidpoints}}
+      <hr/>
+      <div class="marginLeft">
+      {{moFormat Midpoint2.time }} 
+      ({{moFromNow Midpoint2.time withoutSuffix}})
+      <div>
+       <strong>Description of location :</strong>
+       {{Midpoint2.location.description}}
+      </div>
+      {{> afQuickField name="Midpoint2.location" }}
+    </div>
+    {{/if}}
+  <button  id="addNewMidpoint" class="btn btn-success">
+    Add new midpoint
+  </button>
+  {{#if midpoints}}
+
+    There are {{midpoints}} to this route.
+  {{else}}
+    There is no midpoint to this route.
+  {{/if}}
+    <hr/>
+
+    <h2>Arrival</h2>
+    <div class="marginLeft">
+    {{#if Arrival.time}}
+      <strong>Estimated time of arrival :</strong>
+      {{moFormat Arrival.time }} 
+      ({{moFromNow Arrival.time withoutSuffix}})
+    {{/if}}
+    <div>
+      <strong>Description of location :</strong>
+      {{Arrival.location.description}}
+    </div>
+    {{> afQuickField name="Arrival.location" }}
+  </div>
+ 
+  {{/autoForm}}
+  </fieldset>
+    <div class="form-group">
+     <label class="btn btn-primary iaminterestedRadioInput" for="offer_{{_id}}">
+      <input type="checkbox" name="iaminterested" id="offer_{{_id}}" value="{{_id}}" aria-label="I am interested" checked={{isChecked whoIsInterested}}>
+      <span>I'm in</span>
+     </label>
+      <a href="/" class="btn btn-warning marginLeft">Back</a>
+    </div>
+
+
+
+
+
+</template>
